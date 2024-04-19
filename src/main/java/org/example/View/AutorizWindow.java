@@ -3,6 +3,7 @@ package org.example.View;
 import org.example.Data.Client;
 import org.example.Data.MyTableModel;
 import org.example.Data.ClientsRepository;
+import org.example.Data.Repository;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AutorizWindow extends Window {
-    private ClientsRepository repo;
+    private Repository repo;
     private JTable table;
     private JPanel panel;
     private JScrollPane scrollPane;

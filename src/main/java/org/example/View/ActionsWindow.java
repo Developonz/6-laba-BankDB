@@ -3,6 +3,7 @@ package org.example.View;
 import org.example.Data.BankAccs.BankAccount;
 import org.example.Data.Client;
 import org.example.Data.ClientsRepository;
+import org.example.Data.Repository;
 import org.example.Exceptions.ErrorMoneyException;
 
 import javax.swing.*;
@@ -49,7 +50,7 @@ public class ActionsWindow extends Window {
                         try {
                             money = Double.parseDouble(result);
                             acc.topDownAcc(money);
-                            ClientsRepository repo = new ClientsRepository(acc.getBank());
+                            Repository repo = new ClientsRepository(acc.getBank());
                             repo.updateAcc(acc);
                             label.setText(acc.getTitle() + ": " + acc.getMoney() + " руб");
                             JOptionPane.showMessageDialog(getContentPane(), "Сумма успешно снята", "Уведомление", JOptionPane.INFORMATION_MESSAGE);
@@ -71,7 +72,7 @@ public class ActionsWindow extends Window {
                     try {
                         double money = Double.parseDouble(result);
                         acc.topUpAcc(money);
-                        ClientsRepository repo = new ClientsRepository(acc.getBank());
+                        Repository repo = new ClientsRepository(acc.getBank());
                         repo.updateAcc(acc);
                         label.setText(acc.getTitle() + ": " + acc.getMoney() + " руб");
                         JOptionPane.showMessageDialog(getContentPane(), "Счёт успешно пополнен", "Уведомление", JOptionPane.INFORMATION_MESSAGE);
@@ -92,7 +93,7 @@ public class ActionsWindow extends Window {
                     try {
                         acc.renameTitle(result);
                         BankAccount newAcc = acc;
-                        ClientsRepository repo = new ClientsRepository(acc.getBank());
+                        Repository repo = new ClientsRepository(acc.getBank());
                         repo.updateAcc(acc);
                         label.setText(acc.getTitle() + ": " + acc.getMoney() + " руб");
                         JOptionPane.showMessageDialog(getContentPane(), "Счёт успешно переименован", "Уведомление", JOptionPane.INFORMATION_MESSAGE);
@@ -106,7 +107,7 @@ public class ActionsWindow extends Window {
         accRemove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClientsRepository repo = new ClientsRepository(acc.getBank());
+                Repository repo = new ClientsRepository(acc.getBank());
                 if (acc.getOwner().getAccs().size() == 1) {
                     repo.removeClient(acc.getOwner());
                     new EntryToBankWindow(acc.getBank());

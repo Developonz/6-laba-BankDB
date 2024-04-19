@@ -4,6 +4,7 @@ import org.example.Data.BankAccs.BankAccount;
 import org.example.Data.Client;
 import org.example.Data.MyTableModel;
 import org.example.Data.ClientsRepository;
+import org.example.Data.Repository;
 import org.example.Exceptions.ErrorMoneyException;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TransferMoneyWindow extends Window {
-    private ClientsRepository[] repo;
+    private Repository[] repo;
     private JTable table;
     private JPanel panel;
     private JScrollPane scrollPane;
@@ -22,7 +23,7 @@ public class TransferMoneyWindow extends Window {
 
     public TransferMoneyWindow(BankAccount acc) {
         setTitle("Перевод");
-        repo = new ClientsRepository[] {new ClientsRepository("alfa"), new ClientsRepository("tinkoff"), new ClientsRepository("sber")};
+        repo = new Repository[] {new ClientsRepository("alfa"), new ClientsRepository("tinkoff"), new ClientsRepository("sber")};
         table = new JTable(new MyTableModel(repo, acc));
         panel = new JPanel();
         scrollPane = new JScrollPane(table);
